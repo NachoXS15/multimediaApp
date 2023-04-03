@@ -1,0 +1,16 @@
+{
+  "name": "catedrasapinode",
+  "version": "1.0.0",
+  "description": "api restful for catedras",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NachoXS",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
