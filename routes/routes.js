@@ -3,3 +3,6 @@ const router = express.Router();
 
 router.get('/', getCatedrasController);
 router.get('/:id', getCatedrasIdController);
+
+
+module.exports = router;
