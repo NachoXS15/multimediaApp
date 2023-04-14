@@ -5,8 +5,8 @@ const catedraService = require('../services/catedra.services');
 
 async function getCatedrasController(req, res, next){
     try {
-        const catedras = await catedraService.getCatedras();
-        res.json(catedras)
+        const catedra = await catedraService.getCatedras();
+        res.json(catedra)
     } catch (error) {
         next(error);
     }
@@ -14,8 +14,19 @@ async function getCatedrasController(req, res, next){
 
 async function getCatedrasIdController(req, res, next){
     try {
-        const catedras = await catedraService.getCatedrasByID();
-        res.json(catedras);
+        const { id } = req.params;
+        const catedra = await catedraService.getCatedrasByID(id);
+        res.json(catedra);
+    } catch (error) {
+        next(error);
+    }
+}
+
+async function postCatedrasController(req, res, next){
+    const data = req.body;
+    try {
+        const catedra = await catedraService.postCatedras(data);
+        res.json(catedra);
     } catch (error) {
         next(error);
     }
@@ -23,5 +34,6 @@ async function getCatedrasIdController(req, res, next){
 
 module.exports = {
     getCatedrasController,
-    getCatedrasIdController
+    getCatedrasIdController,
+    postCatedrasController
 }
