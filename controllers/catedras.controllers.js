@@ -20,3 +20,8 @@ async function getCatedrasIdController(req, res, next){
         next(error);
     }
 }
+
+module.exports = {
+    getCatedrasController,
+    getCatedrasIdController
+}

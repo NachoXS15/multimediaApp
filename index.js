@@ -4,8 +4,14 @@ const morgan = require('morgan');
 const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
-const catedrasRouter = require('./routes/routes')
-
+const mongodb = require('./databases/md.databases')
+const catedrasRouter = require('./routes/routes');
+mongodb.connectMongoDB()
+    .then(() => {
+        console.log("conexion correcta");
+    }).catch((err) => {
+        console.error("conexion fallida");
+    });
 app.set('port', process.env.PORT || 3000);
 
 //middlewares
@@ -22,3 +28,6 @@ app.use('/catedras', catedrasRouter);
 app.listen(app.set('port'), ()=> {
     console.log(`server on port ${app.get('port')}`);
 })
+
+
+module.exports = app;
