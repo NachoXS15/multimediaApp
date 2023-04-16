@@ -33,8 +33,19 @@ const postCatedras = async(data) => {
     }
 }
 
+//delete an element
+    const deleteElement = async() => {
+        try {
+            const catedra = await catedra.findById(id);
+            return catedra;
+        } catch (error) {
+            throw error;
+        }
+    }  
+
 module.exports = {
     getCatedras,
     getCatedrasByID,
-    postCatedras
+    postCatedras,
+    deleteElement
 }

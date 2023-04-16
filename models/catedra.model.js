@@ -14,4 +14,4 @@ const catedraSchema = new Schema({
 
 const Catedra = mongoose.model('Catedra', catedraSchema)
 
-module.exports = {Catedra};
+module.exports = { Catedra };
