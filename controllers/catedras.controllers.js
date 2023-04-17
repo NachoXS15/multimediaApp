@@ -32,13 +32,14 @@ async function postCatedrasController(req, res, next){
     }
 }
 
-async function deleteCatedrasController(){
-    const {id} = req.params;
+async function deleteCatedrasController(req, res, next){
     try {
-        const catedra = await catedraService.deleteElement(id)
+        const {id} = req.params;
+        const data = req.body;
+        const catedra = await catedraService.deleteCatedra(id, data)
         res.json(catedra);
     } catch (error) {
-        throw error
+        next(error)
     }
 }
 
