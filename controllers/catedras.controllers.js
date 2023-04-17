@@ -32,6 +32,17 @@ async function postCatedrasController(req, res, next){
     }
 }
 
+async function updateCatedrasController(req, res, next){
+    try {
+        const { id } = req.params
+        const data = req.body;
+        const catedra = await catedraService.updateCatedras(id, data)
+        res.json(catedra);
+    } catch (error) {
+        next(error);
+    }
+}
+
 async function deleteCatedrasController(req, res, next){
     try {
         const {id} = req.params;
@@ -47,5 +58,6 @@ module.exports = {
     getCatedrasController,
     getCatedrasIdController,
     postCatedrasController,
+    updateCatedrasController,
     deleteCatedrasController
 }

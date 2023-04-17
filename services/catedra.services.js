@@ -33,22 +33,46 @@ const postCatedras = async(data) => {
     }
 }
 
-//delete an element
-    async function deleteCatedra(id){
-        try {
-            const catedra = await Catedra.findById(id);
-            await catedra.deleteOne();
-            return {
-                operation: 'ok'
-            }
-        } catch (error) {
-            throw error;
+const updateCatedras = async(id, data) => {
+    try {
+        const { nombre, Year, Horario, Profesor, Modalidad, Duracion, Condicionales, Mail } = data;
+        const catedra = await Catedra.findById(id);
+        catedra.nombre = nombre;
+        catedra.Year = Year;
+        catedra.Horario = Horario;
+        catedra.Profesor = Profesor;
+        catedra.Modalidad = Modalidad;
+        catedra.Duracion = Duracion;
+        catedra.Condicionales = Condicionales;
+        catedra.Mail = Mail;
+        await catedra.save();
+        return{
+            operation: 'ok'
         }
-    }  
+    } catch (error) {
+        throw error
+    }
+  
+
+}
+
+//delete an element
+async function deleteCatedra(id){
+    try {
+        const catedra = await Catedra.findById(id);
+        await catedra.deleteOne();
+        return {
+            operation: 'ok'
+        }
+    } catch (error) {
+        throw error;
+    }
+}  
 
 module.exports = {
     getCatedras,
     getCatedrasByID,
     postCatedras,
+    updateCatedras,
     deleteCatedra
 }
